@@ -13,7 +13,6 @@ var express = require('express'),
     cookie = cookieParser(cfg.SECRET);
 
 app.use(express.static(__dirname + '/publico'));
-app.use(express.static(__dirname + '/publico/rest'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieParser("imageUp"));

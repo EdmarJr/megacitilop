@@ -1,0 +1,21 @@
+<div ng-hide="mensagemSucesso == undefined" class="alert alert-success" role="alert">{{mensagemSucesso}}</div> 
+<table ng-table="tableParams" show-filter="true" class="table ng-table-rowselected">
+    <tr ng-repeat="politico in $data"
+        ng-click="politico.$selected = !politico.$selected; changeSelection(politico)"
+        ng-class="{'active': politico.$selected}">
+        <td data-title="'Id'" sortable="'name'" filter="{ 'name': 'text' }">
+            {{politico.id}}
+        </td>
+        <td data-title="'Nome Unidade'" sortable="'name'" filter="{ 'name': 'text' }">
+            {{politico.nome}}
+        </td>
+        <td data-title="'Responsável'" sortable="'age'" filter="{ 'age': 'text' }">
+            {{politico.cargo}}
+        </td>
+        <td> 
+            <button class="btn-info">Gerenciar</button>  
+            <button class="btn-info">Alterar</button> 
+            <button class="btn-danger">Excluir</button>
+        </td>
+    </tr>
+</table>

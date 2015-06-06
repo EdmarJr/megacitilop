@@ -13,10 +13,13 @@
     </title>
         <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="bower_components/angular/angular.min.js"></script>
-        <script type="text/javascript" src="/bower_components/angular-route/angular-route.min.js"></script>
-        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>        
+        <script type="text/javascript" src="bower_components/angular-route/angular-route.min.js"></script>
+        <script type="text/javascript" src="bower_components/angular-cookies/angular-cookies.min.js"></script>
+        <script type="text/javascript" src="bower_components/lodash/dist/lodash.compat.min.js"></script>
+        <script type="text/javascript" src="bower_components/lodash/dist/lodash.min.js"></script>     
         <script type="text/javascript" src="bower_components/restangular/dist/restangular.min.js"></script>
         <script type="text/javascript" src="bower_components/ng-table/dist/ng-table.min.js"></script>
+        <script type="text/javascript" src="resources/js/question/components/autocomplete.js"></script>
         <script type="text/javascript" src="resources/js/question/core/restangular-config.js"></script>
         <script type="text/javascript" src="resources/js/question/core/auth.js"></script>
         <script type="text/javascript" src="resources/js/question/core/routes.js"></script>
@@ -24,18 +27,24 @@
         <script type="text/javascript" src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
         <script type="text/javascript" src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
         <link rel="stylesheet" type="text/css" href="resources/css/question.css">
+        <script type="text/javascript" src="resources/js/question/controllers/home-controller.js"></script>
+        <script type="text/javascript" src="resources/js/question/controllers/busca-controller.js"></script>
+        <script type="text/javascript" src="resources/js/question/controllers/politico-controller.js"></script>
         
         
     </head>
     <body ng-app="question">
-        <header>
-            <h1>Header</h1>
+        <header ng-controller="BuscaController">
+            <nav style="padding-top: 6px;" class="navbar navbar-default">
+                <div class="container-fluid">
+                    <autocomplete on-select="selecionarPolitico" ng-model="yourchoice" data="movies" attr-placeholder="Digite o nome do candidato que você procura" on-type="updateMovies"></autocomplete>
+                </div>
+            </nav>
+            
         </header>
         <div class="content">
             <div ng-view></div>
         </div>
-        <footer>
-            <h5>Footer</h5>
-        </footer>
+       
     </body>
 </html>

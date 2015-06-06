@@ -6,7 +6,7 @@ app.run(function($rootScope, $location, Auth) {
 			if (err) {
 				evt.preventDefault();
 				$rootScope.$evalAsync(function() {
-					$location.path('/login');
+					$location.path('/');
 				});
 			} else {
 //				evt.preventDefault();
@@ -51,7 +51,19 @@ app.config([ '$routeProvider', function($routeProvider) {
 		templateUrl : 'unidade/unidades.html',
 		controller : 'UnidadesController',
 		access_level : 2
+	}).when('/inicio', {
+		templateUrl : 'pages/inicio/inicio.html',
+		controller : 'HomeController',
+		access_level : 2
+	}).when('/politico/:nome', {
+		templateUrl : 'pages/politico/politico.html',
+		controller : 'PoliticoController',
+		access_level : 2
+	}).when('/privado/gerenciarPoliticos', {
+		templateUrl : 'pages/politico/privado/gerenciarPoliticos.html',
+		controller : 'GerenciarPoliticosController',
+		access_level : 2
 	}).otherwise({
-		redirectTo : '/autenticado/inicio'
+		redirectTo : '/inicio'
 	})
 } ]);

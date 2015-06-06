@@ -1,0 +1,54 @@
+
+<div class="col-xs-6 col-sm-6 col-lg-8">
+	<div class="list-group">
+	  <span class="list-group-item"><label>Nome:</label> <label>{{politico.nome}}</label></span>
+	  <span class="list-group-item"><label>Data Nascimento:</label> <label>{{politico.dataNascimento}}</label></span> 
+	  <span class="list-group-item"><label>Cargo principal atualmente:</label> <label>{{politico.carreiraProfissional.cargoPrincipal}}</label></span>
+	  <span class="list-group-item"><label>Aprovações:</label> <label class="badge">{{politico.curtidas.length}}</label></span>
+	  <span class="list-group-item"><label>Desaprovações:</label> <label class="badge">{{politico.descurtidas.length}}</label></span>
+	</div>
+  <span class="row">
+  <div class="alert alert-danger col-xs-12 col-sm-6 col-lg-6" role="alert">
+    <div ng-repeat="destaque in politico.fatosNegativos"> 
+      <span class="linhaAlerta">{{destaque}}</span>
+    </div>
+  </div>
+  <div class="alert alert-success col-xs-12 col-sm-6 col-lg-6" role="success">
+    <div ng-repeat="destaque in politico.fatosPositivos"> 
+      <span class="linhaSucesso">{{destaque}}</span>
+    </div>
+  </div>
+</span>
+	<div class="panel panel-default">
+	  <div class="panel-heading">
+	    <h3 class="panel-title">História</h3>
+	  </div>
+	  <div class="panel-body">
+	    {{politico.descricaoHistoriaVida}}
+	  </div>
+	</div>
+</div>
+<div class="col-xs-6 col-sm-6 col-lg-4">
+	<a href="#" class="thumbnail">
+	  <img src="{{politico.enderecoImagemPrincipal}}">
+	</a>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-lg-12">
+	<div class="panel panel-default">
+  <!-- Default panel contents -->
+	  <div class="panel-heading"><h3 class="panel-title">Carreira Profissional</h3></div>
+	  <div class="panel-body">
+	    <p></p>
+	  </div>
+
+	  <!-- List group -->
+	  <ul class="list-group">
+	  	<div ng-repeat="trabalho in politico.carreiraProfissional.trabalhos"> 
+		    <li class="list-group-item">
+		    	{{trabalho.cargo}}
+		    </li>
+	    </div>
+	  </ul>
+	</div>
+</div>

@@ -1,0 +1,67 @@
+<div modal-inclusao-alteracao-fatos show-modal="{{modalInclusaoAlteracaoFatosVisivel}}" on-close="onCloseModal()">
+	<div inclusao-fato></div>
+</div>
+<div class="col-xs-6 col-sm-6 col-lg-8">
+	<div class="list-group">
+		<span class="list-group-item"><label>Nome:</label> <input type="text" ng-model="politico.nome"/></span>
+		<span class="list-group-item"><label>Data Nascimento:</label> <input type="text" ng-model="politico.dataNascimento"/></span>
+	</div>
+	<span class="row">
+		<div class="alert alert-danger col-xs-12 col-sm-6 col-lg-6" role="alert">
+			<table ng-table="tableParamsFatosNegativos" show-filter="true" class="table ng-table-rowselected">
+				<tr ng-repeat="fato in $data"
+				ng-click="fato.$selected = !fato.$selected; changeSelection(politico)"
+				ng-class="{'active': fato.$selected}">
+				<td data-title="'Fatos Negativos'" sortable="'name'" filter="{ 'name': 'text' }">
+					{{fato.id}} - {{fato.descricao}}
+				</td>
+			</tr>
+		</table>
+		<button ng-click="alterarFato()">Adicionar Fato</button>
+	</div>
+	<div class="alert alert-success col-xs-12 col-sm-6 col-lg-6" role="alert">
+		<table ng-table="tableParamsFatosPositivos" show-filter="true" class="table ng-table-rowselected">
+			<tr ng-repeat="fato in $data"
+			ng-click="fato.$selected = !fato.$selected; changeSelection(politico)"
+			ng-class="{'active': fato.$selected}">
+			<td data-title="'Fatos Positivos'" sortable="'name'" filter="{ 'name': 'text' }">
+				{{fato.id}} - {{fato.descricao}}
+			</td>
+		</tr>
+	</table>
+	<button ng-click="alterarFato()">Adicionar Fato</button>
+</div>
+</span>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">História</h3>
+	</div>
+	<div class="panel-body">
+		<textarea class="form-control" rows="10" style="width:100%" ng-model="politico.descricaoHistoriaVida"></textarea>
+	</div>
+</div>
+</div>
+<div class="col-xs-6 col-sm-6 col-lg-4">
+	<a href="#" class="thumbnail">
+		<img src="{{politico.enderecoImagemPrincipal}}">
+	</a>
+</div>
+
+<div class="col-xs-12 col-sm-12 col-lg-12">
+	<div class="panel panel-default">
+		<!-- Default panel contents -->
+		<div class="panel-heading"><h3 class="panel-title">Carreira Profissional</h3></div>
+		<div class="panel-body">
+			<p></p>
+		</div>
+
+		<!-- List group -->
+		<ul class="list-group">
+			<div ng-repeat="trabalho in politico.carreiraProfissional.trabalhos"> 
+				<li class="list-group-item">
+					{{trabalho.cargo}}
+				</li>
+			</div>
+		</ul>
+	</div>
+</div>
